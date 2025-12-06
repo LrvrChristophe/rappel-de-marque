@@ -1,1 +1,29 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+input[type=text] {
+  width:100%;
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.preview {
+  width: 16cm;
+  height: 7.8cm;
+  border: 1px solid #000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+  margin-bottom:15px;
+  text-transform: uppercase;
+  font-weight:bold;
+}
+
+@media print {
+  button, input, label, h2, h3 {display:none;}
+  .preview {page-break-after: always;}
+}
 

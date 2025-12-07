@@ -13,7 +13,7 @@ input[type=text] {
 .preview {
   width: 16cm;
   height: 7.8cm;
-  border: 1px solid #000;
+  border: 1px solid red;
   display:flex;
   justify-content:center;
   align-items:center;

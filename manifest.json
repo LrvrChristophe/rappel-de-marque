@@ -3,8 +3,8 @@
   "short_name": "Étiquettes",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#713e5a",
-  "theme_color": "#713e5a",
+  "background_color": "#d4ae77",
+  "theme_color": "#d4ae77",
   "icons": [{
       "src": "/asset/rappel-des-marques-192.png",
       "sizes": "192x192",

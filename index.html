@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="main.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#713e5a">
-<link rel="icon" href="asset/rappel-des-marques.png">
+<link rel="icon" href="rappel-des-marques.png">
+
+
+
+  
 </head>
 <body>
 
@@ -38,6 +42,11 @@
 <button onclick="imprimer()">Imprimer</button>
 
 <script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
+</script>
 
 </body>
 </html>

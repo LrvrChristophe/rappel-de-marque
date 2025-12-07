@@ -11,9 +11,9 @@ function maj(){
 
   inputs.forEach((e,i)=>{
     let t=e.value.toUpperCase();
-    if(t.length>10){
-      alert("Max 10 caractères");
-      t=t.substr(0,10);
+    if(t.length>12){
+      alert("Max 12 caractères");
+      t=t.substr(0,12);
       e.value=t;
     }
 

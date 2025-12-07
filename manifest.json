@@ -6,11 +6,11 @@
   "background_color": "#d4ae77",
   "theme_color": "#d4ae77",
   "icons": [{
-      "src": "asset/rappel-des-marques-192.png",
+      "src": "rappel-des-marques-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },{
-      "src": "asset/rappel-des-marques.png",
+      "src": "rappel-des-marques.png",
       "sizes": "512x512",
       "type": "image/png"
     }]

@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
-  background-color:blue;
-  padding: 200px;
+  padding: 20px;
 }
 
 input[type=text] {
@@ -21,6 +20,7 @@ input[type=text] {
   margin-bottom:15px;
   text-transform: uppercase;
   font-weight:bold;
+  background-color:blue;
 }
 
 @media print {

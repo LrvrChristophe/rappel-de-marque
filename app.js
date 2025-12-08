@@ -140,7 +140,7 @@ function effacer() {
   // vider les previews
   document.querySelectorAll(".preview").forEach(prv => {
     prv.innerText = "";
-    prv.style.backgroundColor = "#ffffff";
+    prv.style.backgroundColor = "#713e5a";
     prv.style.color = "#000000";
   });
 }

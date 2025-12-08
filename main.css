@@ -83,7 +83,20 @@ input[type=text] {
   }
 
   /* éviter d'avoir une 2ème page */
-  @page { size: A4 portrait; margin: 0; }
+  @page { size: A4 portrait; margin: 8mm; }
+ body {
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    page-break-inside: avoid !important;
+  }
+     html, body {
+      height: auto !important;
+      overflow: visible !important;
+   }
+    
 }
 
 

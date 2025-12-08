@@ -163,7 +163,7 @@ function checkImprimeButton() {
 
 // surveille les changements
 ["v1","v2","v3"].forEach(id => {
-  document.getElementById(id).addEventListener("input", checkEffacerButton);
+  document.getElementById(id).addEventListener("input", checkImprimeButton);
 });
 
 function effacer() {

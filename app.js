@@ -59,15 +59,11 @@ function imprimer(){
     clone.style.width = "16cm";
     clone.style.height = "7.8cm";
 
-    printArea.appendChild(clone);
-  });
+ 
 
-  printArea.style.display = "block";
-  window.print();
+ 
 
-  setTimeout(() => {
-    printArea.style.display = "none";
-  }, 500);
+ 
 }
 
 

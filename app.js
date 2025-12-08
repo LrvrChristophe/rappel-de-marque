@@ -31,9 +31,7 @@ inputs.forEach(e=> e.addEventListener("input",maj));
 bgColor.addEventListener("input",maj);
 textColor.addEventListener("input",maj);
 
-function imprimer(){
-  window.print();
-}
+
 
 // --- PWA install
 if ("serviceWorker" in navigator) {

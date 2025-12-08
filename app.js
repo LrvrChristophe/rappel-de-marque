@@ -41,40 +41,94 @@ if ("serviceWorker" in navigator) {
 /* --------------------------
    IMPRESSION DIRECTE A4
    -------------------------- */
+// Remplace ta fonction Imprimer() par ceci :
 function Imprimer() {
+  try {
+    // Récupérer valeurs et couleurs depuis les inputs / aperçus
+    const v1 = (document.getElementById('v1')?.value || '').toString().toUpperCase();
+    const v2 = (document.getElementById('v2')?.value || '').toString().toUpperCase();
+    const v3 = (document.getElementById('v3')?.value || '').toString().toUpperCase();
 
-  const printArea = document.getElementById("printArea");
-  printArea.innerHTML = "";
+    const bg = document.getElementById('bgColor')?.value || '#ffffff';
+    const tx = document.getElementById('textColor')?.value || '#000000';
 
-  [p1, p2, p3].forEach(p => {
-    const clone = p.cloneNode(true);
-    clone.style.marginBottom = "1cm";
-    printArea.appendChild(clone);
-  });
-  const apercus = [p1, p2, p3];
+    // Construire les blocs (3 étiquettes)
+    const printArea = document.getElementById('printArea');
+    printArea.innerHTML = ''; // reset
 
-  apercus.forEach(p => {
-    const clone = p.cloneNode(true);
+    const texts = [v1, v2, v3];
 
-    // FORCER le centrage pour l'impression
-    clone.style.display = "flex";
-    clone.style.alignItems = "center";
-    clone.style.justifyContent = "center";
+    texts.forEach(txt => {
+      const div = document.createElement('div');
+      div.className = 'label';
+      div.style.background = bg;
+      div.style.color = tx;
+      div.style.fontSize = calculateFontSizeForText(txt); // optionnel : adapte la taille
+      div.textContent = txt || ' ';
+      printArea.appendChild(div);
+    });
 
-   
-    clone.style.width = "16cm";
-    clone.style.height = "7.8cm";
+    // Afficher la zone d'impression (visible sur la page mais CSS @media print la masque sauf pendant impression)
+    printArea.style.display = 'block';
 
-    printArea.appendChild(clone);
-  });
+    // Small delay to ensure rendering (100-200ms)
+    setTimeout(() => {
+      window.print();
 
-  printArea.style.display = "block";
+      // Masquer printArea après impression pour revenir à l'UI normale
+      setTimeout(() => {
+        printArea.style.display = 'none';
+        printArea.innerHTML = '';
+      }, 500);
+    }, 120);
 
-  setTimeout(() => {
-    window.print();
-    printArea.style.display = "none";
-  }, 100);
+  } catch (err) {
+    console.error('Erreur Imprimer():', err);
+    // fallback : ouvrir nouvelle fenêtre (moins fiable pour couleurs)
+    fallbackPrintInNewWindow();
+  }
+}
 
+// fonction simple pour estimer une taille de police adaptée (valeurs en px)
+function calculateFontSizeForText(txt) {
+  // contraintes demandées : min 65px, max 120px (approx. utilisable ici)
+  const minPx = 65;
+  const maxPx = 120;
+  const len = Math.max(1, Math.min(10, txt.length)); // 1..10
+  // plus de caractères => taille plus petite (linéaire)
+  const size = Math.round(maxPx - (len - 1) * ((maxPx - minPx) / 9));
+  return size + 'px';
+}
+
+// fallback : nouvelle fenêtre avec le même contenu (utiliser si erreur)
+function fallbackPrintInNewWindow() {
+  const v1 = (document.getElementById('v1')?.value || '').toString().toUpperCase();
+  const v2 = (document.getElementById('v2')?.value || '').toString().toUpperCase();
+  const v3 = (document.getElementById('v3')?.value || '').toString().toUpperCase();
+  const bg = document.getElementById('bgColor')?.value || '#ffffff';
+  const tx = document.getElementById('textColor')?.value || '#000000';
+
+  const html = `
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      @page { size: A4 portrait; margin: 0; }
+      html,body { margin:0; padding:0; width:210mm; height:297mm; }
+      .label { width:16cm; height:7.8cm; margin:0.5cm auto; display:flex; align-items:center; justify-content:center; font-weight:bold; text-transform:uppercase; overflow:hidden; white-space:nowrap; }
+    </style>
+  </head>
+  <body>
+    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v1)}">${v1}</div>
+    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v2)}">${v2}</div>
+    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v3)}">${v3}</div>
+    <script>window.onload = ()=>{ window.print(); setTimeout(()=>window.close(),500); };</script>
+  </body>
+  </html>`;
+
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
 }
 
 

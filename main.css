@@ -36,8 +36,54 @@ input[type=text] {
 }
 
 
-@media print {
-  button, input, label, h2, h3 {display:none;}
-  .preview {page-break-after: always;}
+/* zone d'impression invisible par défaut */
+#printArea {
+  display: none;
 }
+
+/* impression : ne montrer que #printArea */
+@media print {
+  /* cacher tout le reste */
+  body * { visibility: hidden !important; }
+
+  /* rendre visible uniquement l'aire d'impression */
+  #printArea, #printArea * {
+    visibility: visible !important;
+  }
+
+  /* positionner l'aire d'impression en haut à gauche de la page */
+  #printArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;    /* A4 width */
+    height: 297mm;   /* A4 height */
+    margin: 0;
+    box-sizing: border-box;
+    padding: 5mm;    /* petit padding si tu veux */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* style pour chaque étiquette */
+  #printArea .label {
+    width: 16cm;
+    height: 7.8cm;
+    margin: 0 auto;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-column-break-inside: avoid !important;
+  }
+
+  /* éviter d'avoir une 2ème page */
+  @page { size: A4 portrait; margin: 0; }
+}
+
 

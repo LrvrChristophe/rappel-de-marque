@@ -71,24 +71,7 @@ align-items:center;
 
 <button onclick="imprimer()">Imprimer</button>
 
-<div id="updatePopup" style="display:none;position:fixed;bottom:20px;right:20px;padding:15px;background:#333;color:#fff;border-radius:10px;">
-   Nouvelle version disponible 🚀
-   <button onclick="refreshApp()" style="margin-left:10px;">Mettre à jour</button>
-</div>
 
-<script>
-function showUpdatePopup() {
-  document.getElementById("updatePopup").style.display = "block";
-}
-
-function refreshApp() {
-  window.location.reload(true);
-}
-</script>
-
-
-
-  
 <script src="app.js"></script>
 <script>
 if ("serviceWorker" in navigator) {

@@ -44,33 +44,7 @@
 
 
 <script src="app.js"></script>
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js")
-    .then(reg => {
-      reg.onupdatefound = () => {
-        const newWorker = reg.installing;
 
-        newWorker.onstatechange = () => {
-          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-            showUpdateBanner();
-          }
-        };
-      };
-    });
-}
-
-function showUpdateBanner() {
-  document.getElementById("updateBanner").style.display = "flex";
-}
-
-function refreshApp() {
-  navigator.serviceWorker.getRegistration().then(reg => {
-    reg.waiting.postMessage({action:'skipWaiting'});
-    window.location.reload();
-  });
-}
-</script>
 
 </body>
 </html>

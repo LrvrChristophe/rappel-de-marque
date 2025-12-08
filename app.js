@@ -132,7 +132,7 @@ function fallbackPrintInNewWindow() {
 }
 function effacer() {
   if (!confirm("Effacer tout ?")) return;
-  document.querySelector("form").reset();
+  document.querySelector("monForm").reset();
 }
 function fermerApp(){
    window.open('', '_self').close();

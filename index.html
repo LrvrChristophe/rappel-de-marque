@@ -8,9 +8,6 @@
 <meta name="theme-color" content="#713e5a">
 <link rel="icon" href="rappel-des-marques.png">
 
-
-
-  
 </head>
 <body>
 <h2 style="text-align:center;">Etiquettes</h2>
@@ -20,8 +17,14 @@
 <label>Étiquette 2<input id="v2" type="text" maxlength="12"></label>
 <label>Étiquette 3<input id="v3" type="text" maxlength="12"></label>
 
-<label>Couleur fond<input type="color" id="bgColor" value="#713e5a"></label>
-<label>Couleur texte<input type="color" id="textColor" value="#d4ae77"></label>
+<div class="color-row" style="justify-content: left;">
+<label>Les couleurs,</label>
+  <label>fond :</label>
+  <input type="color" id="bgColor" value="#713e5a" style="width:60px; height:20px; cursor:pointer">
+
+  <label>texte :</label>
+  <input type="color" id="textColor" value="#d4ae77" style="width:60px; height:20px; cursor:pointer">
+</div>
 
 <h3>Aperçu</h3>
 

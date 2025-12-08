@@ -61,7 +61,7 @@ function Imprimer() {
     clone.style.alignItems = "center";
     clone.style.justifyContent = "center";
 
-    clone.style.margin = "1cm auto";
+   
     clone.style.width = "16cm";
     clone.style.height = "7.8cm";
 

@@ -152,6 +152,19 @@ function checkEffacerButton() {
 ["v1","v2","v3"].forEach(id => {
   document.getElementById(id).addEventListener("input", checkEffacerButton);
 });
+function checkImprimeButton() {
+  const hasText =
+    document.getElementById("v1").value ||
+    document.getElementById("v2").value ||
+    document.getElementById("v3").value;
+
+  document.getElementById("btnImprime").disabled = !hasText;
+}
+
+// surveille les changements
+["v1","v2","v3"].forEach(id => {
+  document.getElementById(id).addEventListener("input", checkEffacerButton);
+});
 
 function effacer() {
   Swal.fire({

@@ -83,7 +83,7 @@ input[type=text] {
   }
 
   /* éviter d'avoir une 2ème page */
-  @page { size: A4 portrait; margin: 8mm; }
+  @page { size: A4 portrait; margin: 0mm; }
  body {
     margin: 0;
     padding: 0;

@@ -40,3 +40,58 @@ if ("serviceWorker" in navigator) {
    navigator.serviceWorker.register("sw.js");
 }
 
+/* --------------------------
+   IMPRESSION DIRECTE A4
+   -------------------------- */
+
+function imprimer() {
+
+  const printArea = document.getElementById("printArea");
+  printArea.innerHTML = ""; // reset
+
+  const apercus = [p1, p2, p3];
+
+  apercus.forEach(p => {
+    const clone = p.cloneNode(true);
+
+    // FORCER le centrage pour l'impression
+    clone.style.display = "flex";
+    clone.style.alignItems = "center";
+    clone.style.justifyContent = "center";
+
+    clone.style.margin = "1cm auto";
+    clone.style.width = "16cm";
+    clone.style.height = "7.8cm";
+
+    printArea.appendChild(clone);
+  });
+
+  printArea.style.display = "block";
+  window.print();
+
+  setTimeout(() => {
+    printArea.style.display = "none";
+  }, 500);
+}
+
+
+
+/* --------------------------
+   ÉCOUTEURS
+   -------------------------- */
+document.getElementById("v1").addEventListener("input", majApercu);
+document.getElementById("v2").addEventListener("input", majApercu);
+document.getElementById("v3").addEventListener("input", majApercu);
+
+document.getElementById("bgColor").addEventListener("input", () => {
+  majApercu({target: v1});
+  majApercu({target: v2});
+  majApercu({target: v3});
+});
+
+document.getElementById("textColor").addEventListener("input", () => {
+  majApercu({target: v1});
+  majApercu({target: v2});
+  majApercu({target: v3});
+});
+

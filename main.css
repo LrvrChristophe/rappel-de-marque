@@ -35,10 +35,7 @@ input[type=text] {
   font-weight:bold;
 }
 
-@media print {
-  button, input, label, h2, h3 {display:none;}
-  .preview {page-break-after: always;}
-}
+
 
 
 @media print {
@@ -56,8 +53,8 @@ input[type=text] {
   }
 
   #printArea {
-    width: 100%;
-    height: 100vh;          /* prend exactement 1 page */
+    width: 100 %;
+    height: 100 vh;          /* prend exactement 1 page */
     display: flex;
     align-items: center;    /* centre verticalement */
     justify-content: center;/* centre horizontalement */
@@ -86,7 +83,7 @@ input[type=text] {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100 %;
   }
 
   /* IMPORTANT → Autorise les couleurs d’impression */

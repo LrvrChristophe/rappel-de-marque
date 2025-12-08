@@ -130,14 +130,10 @@ function fallbackPrintInNewWindow() {
   w.document.write(html);
   w.document.close();
 }
-
 function effacer() {
   if (!confirm("Effacer tout ?")) return;
-  
-window.location.reload();
-
+  document.querySelector("form").reset();
 }
-
 function fermerApp(){
    window.open('', '_self').close();
 }

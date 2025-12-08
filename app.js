@@ -39,11 +39,4 @@ function imprimer(){
 if ("serviceWorker" in navigator) {
    navigator.serviceWorker.register("sw.js");
 }
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(resp => {
-      return resp || fetch(event.request);
-    })
-  );
-});
 

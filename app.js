@@ -131,9 +131,14 @@ function fallbackPrintInNewWindow() {
   w.document.close();
 }
 
-function fermerApp(){
-   window.open('', '_self').close();
+function fermerApp() {
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    window.close();
+  } else {
+    window.location.href = 'about:blank';
+  }
 }
+
 function checkEffacerButton() {
   const hasText =
     document.getElementById("v1").value ||

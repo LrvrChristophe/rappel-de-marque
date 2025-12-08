@@ -13,6 +13,36 @@
   
 </head>
 <body>
+<div id="updateBanner" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#0F9D58;
+color:white;
+padding:14px 20px;
+font-size:16px;
+font-family:sans-serif;
+box-shadow:0 2px 8px rgba(0,0,0,0.25);
+z-index:9999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+  <span>Nouvelle version disponible</span>
+  <button onclick="refreshApp()" style="
+    background:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:4px;
+    color:#0F9D58;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;">
+    Mettre à jour
+  </button>
+</div>
 
 <h2>Rappel de Marque</h2>
 
@@ -42,6 +72,33 @@
 <button onclick="imprimer()">Imprimer</button>
 
 <script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(reg => {
+      reg.onupdatefound = () => {
+        const newWorker = reg.installing;
+
+        newWorker.onstatechange = () => {
+          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+            showUpdateBanner();
+          }
+        };
+      };
+    });
+}
+
+function showUpdateBanner() {
+  document.getElementById("updateBanner").style.display = "flex";
+}
+
+function refreshApp() {
+  navigator.serviceWorker.getRegistration().then(reg => {
+    reg.waiting.postMessage({action:'skipWaiting'});
+    window.location.reload();
+  });
+}
+</script>
 
 </body>
 </html>

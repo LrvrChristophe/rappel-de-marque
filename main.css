@@ -69,7 +69,7 @@ input[type=text] {
   #printArea .label {
     width: 16cm;
     height: 7.8cm;
-    margin: 0 auto;
+    margin: 1cm auto;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;

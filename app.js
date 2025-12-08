@@ -135,7 +135,7 @@ function effacer() {
   if (!confirm("Effacer tout ?")) return;
   
 window.location.reload();
-);
+
 }
 
 function fermerApp(){

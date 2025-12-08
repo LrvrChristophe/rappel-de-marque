@@ -8,7 +8,14 @@ input[type=text] {
   margin-bottom:10px;
   font-size:20px;
 }
-
+.dialog { 
+      background: #f8f8f8;
+    border: 2px solid #b5b5b5;
+    width: 620px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: inset 0 0 4px #d0d0d0;
+}
 .preview {
   width: 16cm;
   height: 7.8cm;

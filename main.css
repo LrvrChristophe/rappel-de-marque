@@ -36,7 +36,10 @@ input[type=text] {
 }
 
 
-
+@media print {
+  button, input, label, h2, h3 {display:none;}
+  .preview {page-break-after: always;}
+}
 
 @media print {
 

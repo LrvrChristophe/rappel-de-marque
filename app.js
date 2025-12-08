@@ -41,9 +41,25 @@ if ("serviceWorker" in navigator) {
 /* --------------------------
    IMPRESSION DIRECTE A4
    -------------------------- */
-function imprimer(){
-  window.print();
+function Imprimer() {
 
+  const printArea = document.getElementById("printArea");
+  printArea.innerHTML = "";
+
+  [p1, p2, p3].forEach(p => {
+    const clone = p.cloneNode(true);
+    clone.style.marginBottom = "1cm";
+    printArea.appendChild(clone);
+  });
+
+  printArea.style.display = "block";
+
+  setTimeout(() => {
+    window.print();
+    printArea.style.display = "none";
+  }, 100);
+
+}
 
 }
 

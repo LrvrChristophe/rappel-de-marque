@@ -198,6 +198,7 @@ function effacer() {
   });
 }
 
+p1.querySelector("span").textContent = valeur;
 
 
 

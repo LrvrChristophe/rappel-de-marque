@@ -37,7 +37,7 @@ function imprimer(){
 
 // --- PWA install
 if ("serviceWorker" in navigator) {
-   navigator.serviceWorker.register("/sw.js");
+   navigator.serviceWorker.register("sw.js");
 }
 self.addEventListener('fetch', event => {
   event.respondWith(

@@ -141,7 +141,7 @@ function effacer() {
   document.querySelectorAll(".preview").forEach(prv => {
     prv.innerText = "";
     prv.style.backgroundColor = "#713e5a";
-    prv.style.color = "#000000";
+    prv.style.color = "#d4ae77";
   });
 }
 

@@ -151,6 +151,37 @@ function checkEffacerButton() {
   document.getElementById(id).addEventListener("input", checkEffacerButton);
 });
 
+function effacer() {
+  Swal.fire({
+    title: "Effacer ?",
+    text: "Toutes les informations seront supprimées.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#999",
+    confirmButtonText: "Oui, effacer"
+  }).then((result) => {
+    if (!result.isConfirmed) return;
+
+    // vider les champs
+    document.getElementById("v1").value = "";
+    document.getElementById("v2").value = "";
+    document.getElementById("v3").value = "";
+
+    // remettre les couleurs
+    document.getElementById("bgColor").value = "#713e5a";
+    document.getElementById("textColor").value = "#d4ae77";
+
+    // vider preview
+    document.querySelectorAll(".preview").forEach(p => {
+      p.innerHTML = "";
+      p.style.backgroundColor = "#fff";
+      p.style.color = "#000";
+    });
+
+    checkEffacerButton();
+  });
+}
 
 
 

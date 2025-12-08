@@ -104,10 +104,5 @@ input[type=text] {
         height: 100vh;
     }
 }
-/* 📱 Version mobile */
-@media (max-width: 768px) {
- 
-  .dialog { 
-    width: 100%;
-  }
-}
+
+

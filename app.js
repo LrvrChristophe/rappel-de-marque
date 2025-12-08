@@ -30,7 +30,9 @@ function maj(){
 inputs.forEach(e=> e.addEventListener("input",maj));
 bgColor.addEventListener("input",maj);
 textColor.addEventListener("input",maj);
-
+function imprimer(){
+  window.print();
+}
 
 
 // --- PWA install
@@ -72,24 +74,4 @@ function imprimer() {
   }, 500);
 }
 
-
-
-/* --------------------------
-   ÉCOUTEURS
-   -------------------------- */
-document.getElementById("v1").addEventListener("input", majApercu);
-document.getElementById("v2").addEventListener("input", majApercu);
-document.getElementById("v3").addEventListener("input", majApercu);
-
-document.getElementById("bgColor").addEventListener("input", () => {
-  majApercu({target: v1});
-  majApercu({target: v2});
-  majApercu({target: v3});
-});
-
-document.getElementById("textColor").addEventListener("input", () => {
-  majApercu({target: v1});
-  majApercu({target: v2});
-  majApercu({target: v3});
-});
 

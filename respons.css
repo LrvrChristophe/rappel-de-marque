@@ -1,1 +1,51 @@
+/* ===== CONTENEUR DES PREVIEWS ==== */
+.preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7.8;   /* a garde exactement tes dimensions */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-weight:bold;
+  border-radius:10px;
+  margin-top:10px;
+  white-space:nowrap;
+}
+
+/* ==== RESPONSIVE TEXTE ==== */
+.preview span{
+  display:block;
+  width:100%;
+  font-size: clamp(40px, 10vw, 120px); /* max 120 min 40 */
+}
+
+/* ===== LAYOUT GLOBAL ==== */
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:10px;
+}
+
+/* === BOUTONS === */
+button{
+  padding:12px 18px;
+  font-size:18px;
+  border-radius:8px;
+  width:100%;
+  margin-top:8px;
+}
+
+/* === MOBILE ===*/
+@media(max-width:480px){
+
+  .preview{
+    aspect-ratio: 4/2; /* plus carré sur mobile*/
+  }
+  
+  button{
+    font-size:16px;
+    padding:10px;
+  }
+}
 

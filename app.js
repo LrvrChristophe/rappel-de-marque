@@ -51,6 +51,22 @@ function Imprimer() {
     clone.style.marginBottom = "1cm";
     printArea.appendChild(clone);
   });
+  const apercus = [p1, p2, p3];
+
+  apercus.forEach(p => {
+    const clone = p.cloneNode(true);
+
+    // FORCER le centrage pour l'impression
+    clone.style.display = "flex";
+    clone.style.alignItems = "center";
+    clone.style.justifyContent = "center";
+
+    clone.style.margin = "1cm auto";
+    clone.style.width = "16cm";
+    clone.style.height = "7.8cm";
+
+    printArea.appendChild(clone);
+  });
 
   printArea.style.display = "block";
 

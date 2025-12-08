@@ -130,12 +130,10 @@ function fallbackPrintInNewWindow() {
   w.document.write(html);
   w.document.close();
 }
-function effacer() {
+
 function effacer() {
   if (!confirm("Effacer tout ?")) return;
   
-
-
   // vider tous les inputs
   document.querySelectorAll("input").forEach(inp => inp.value = "");
 
@@ -144,8 +142,9 @@ function effacer() {
     prv.innerText = "";
     prv.style.backgroundColor = "#ffffff";
     prv.style.color = "#000000";
-  }});
+  });
 }
+
 function fermerApp(){
    window.open('', '_self').close();
 }

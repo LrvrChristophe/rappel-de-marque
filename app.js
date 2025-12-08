@@ -41,9 +41,8 @@ if ("serviceWorker" in navigator) {
 /* --------------------------
    IMPRESSION DIRECTE A4
    -------------------------- */
-
-function imprimer() {
-
+function imprimer(){
+  window.print();
 
 
   const apercus = [p1, p2, p3];

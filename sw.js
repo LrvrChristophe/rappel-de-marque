@@ -12,7 +12,9 @@ self.addEventListener("install", event => {
         "/manifest.json",
         "/offline.html",
         "/rappel-des-marques-192.png",
-        "/rappel-des-marques-512.png",
+        "/rappel-des-marques-512.png",        
+         "/app.js",
+         "/main.css",
         // ajoute tes fichiers CSS / JS ici
       ]);
     })

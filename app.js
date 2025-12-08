@@ -44,8 +44,7 @@ if ("serviceWorker" in navigator) {
 
 function imprimer() {
 
-  const printArea = document.getElementById("printArea");
-  printArea.innerHTML = ""; // reset
+
 
   const apercus = [p1, p2, p3];
 

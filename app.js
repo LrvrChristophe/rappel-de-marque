@@ -148,16 +148,6 @@ function checkEffacerButton() {
   document.getElementById(id).addEventListener("input", checkEffacerButton);
 });
 
-
-
-
-//  function effacer() {
-//  if (!confirm("Effacer tout ?")) return;
-//  document.querySelector("monForm").reset();
-// }
-
-
-
 function effacer() {
   Swal.fire({
     title: "Effacer ?",

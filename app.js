@@ -130,10 +130,7 @@ function fallbackPrintInNewWindow() {
   w.document.write(html);
   w.document.close();
 }
-function effacer() {
-  if (!confirm("Effacer tout ?")) return;
-  document.querySelector("monForm").reset();
-}
+
 function fermerApp(){
    window.open('', '_self').close();
 }

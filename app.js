@@ -134,15 +134,8 @@ function fallbackPrintInNewWindow() {
 function effacer() {
   if (!confirm("Effacer tout ?")) return;
   
-  // vider tous les inputs
-  document.querySelectorAll("input").forEach(inp => inp.value = "");
-
-  // vider les previews
-  document.querySelectorAll(".preview").forEach(prv => {
-    prv.innerText = "";
-    prv.style.backgroundColor = "#713e5a";
-    prv.style.color = "#d4ae77";
-  });
+window.location.reload();
+);
 }
 
 function fermerApp(){

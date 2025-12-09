@@ -200,6 +200,14 @@ function effacer() {
     checkEffacerButton();
   });
 }
+if (window.matchMedia("(min-width: 800px)").matches){
+  window.resizeTo(620, window.outerHeight);
+
+  const x = (screen.width - 620) / 2;
+  const y = (screen.height - window.outerHeight) / 2;
+
+  window.moveTo(x, y);
+}
 
 
 

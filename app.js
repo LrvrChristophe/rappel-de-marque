@@ -5,7 +5,7 @@ const p3=document.getElementById("p3");
 const inputs=[v1,v2,v3];
 const pv=[p1,p2,p3];
 
-
+p1.querySelector("span").textContent = valeur;
 
 
 function maj(){

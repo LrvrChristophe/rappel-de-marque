@@ -200,13 +200,7 @@ function effacer() {
     checkEffacerButton();
   });
 }
-if (window.opener == null){
-  window.open(
-    window.location.href,
-    "_blank",
-    "width=520,height=400"
-  );
-}
+
 
 
 

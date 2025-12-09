@@ -15,7 +15,7 @@ self.addEventListener("install", event => {
         "/rappel-des-marques-512.png",        
          "/app.js",
          "/main.css",
-        "/respons.css",
+        "/respons.css"
         // ajoute tes fichiers CSS / JS ici
       ]);
     })

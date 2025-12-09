@@ -201,9 +201,9 @@ function effacer() {
   });
 }
 if (window.matchMedia("(min-width: 800px)").matches){
-  window.resizeTo(620, window.outerHeight);
+  window.resizeTo(720, window.outerHeight);
 
-  const x = (screen.width - 620) / 2;
+  const x = (screen.width - 720) / 2;
   const y = (screen.height - window.outerHeight) / 2;
 
   window.moveTo(x, y);

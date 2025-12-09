@@ -204,7 +204,7 @@ if (window.opener == null){
   window.open(
     window.location.href,
     "_blank",
-    "width=620,height=600"
+    "width=520,height=400"
   );
 }
 

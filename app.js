@@ -1,3 +1,30 @@
+
+const MAX_LINE = 12;   // caractères par ligne
+const MAX_TOTAL = 24;  // 2 lignes
+
+// Découpe en 1 ou 2 lignes (coupe sur un espace si possible)
+function splitLines(t) {
+  t = t.slice(0, MAX_TOTAL);
+  if (t.length <= MAX_LINE) return [t];
+
+  const cut = t.lastIndexOf(" ", MAX_LINE);
+  let l1, l2;
+  if (cut > 0 && t.length - cut - 1 <= MAX_LINE) {
+    l1 = t.slice(0, cut);
+    l2 = t.slice(cut + 1);
+  } else {
+    l1 = t.slice(0, MAX_LINE);
+    l2 = t.slice(MAX_LINE).trim();
+  }
+  return l2 ? [l1, l2] : [l1];
+}
+
+// Taille basée sur la ligne la plus longue (même logique qu'avant)
+function fontSizeFor(lines) {
+  const longest = Math.min(MAX_LINE, Math.max(...lines.map(l => l.length)));
+  return Math.max(65, 120 - longest * 6);
+}
+
 const p1=document.getElementById("p1");
 const p2=document.getElementById("p2");
 const p3=document.getElementById("p3");
@@ -9,24 +36,25 @@ const pv=[p1,p2,p3];
 
 
 function maj(){
-  const bg=bgColor.value;
-  const text=textColor.value;
+  const bg = bgColor.value;
+  const text = textColor.value;
 
   inputs.forEach((e,i)=>{
-    let t=e.value.toUpperCase();
-    if(t.length>12){
-      alert("Max 12 caractères");
-      t=t.substr(0,12);
-      e.value=t;
+    let t = e.value.toUpperCase();
+    if (t.length > MAX_TOTAL) {
+      alert("Max " + MAX_TOTAL + " caractères (2 lignes de " + MAX_LINE + ")");
+      t = t.slice(0, MAX_TOTAL);
+      e.value = t;
     }
 
-    let size=120-(t.length*6);
-    if(size<65) size=65;
+    const lines = splitLines(t);
 
-    pv[i].style.background=bg;
-    pv[i].style.color=text;
-    pv[i].style.fontSize=size+"px";
-    pv[i].textContent=t;
+    pv[i].style.background = bg;
+    pv[i].style.color = text;
+    pv[i].style.fontSize = fontSizeFor(lines) + "px";
+    pv[i].style.whiteSpace = "pre";
+    pv[i].style.lineHeight = "1.05";
+    pv[i].textContent = lines.join("\n");
   });
 }
 
@@ -62,14 +90,17 @@ function Imprimer() {
     const texts = [v1, v2, v3];
 
     texts.forEach(txt => {
-      const div = document.createElement('div');
-      div.className = 'label';
-      div.style.background = bg;
-      div.style.color = tx;
-      div.style.fontSize = calculateFontSizeForText(txt); // optionnel : adapte la taille
-      div.textContent = txt || ' ';
-      printArea.appendChild(div);
-    });
+  const lines = splitLines(txt);
+  const div = document.createElement('div');
+  div.className = 'label';
+  div.style.background = bg;
+  div.style.color = tx;
+  div.style.fontSize = fontSizeFor(lines) + 'px';
+  div.style.whiteSpace = 'pre';
+  div.style.lineHeight = '1.05';
+  div.textContent = lines.join('\n') || ' ';
+  printArea.appendChild(div);
+});
 
     // Afficher la zone d'impression (visible sur la page mais CSS @media print la masque sauf pendant impression)
     printArea.style.display = 'block';
@@ -110,7 +141,10 @@ function fallbackPrintInNewWindow() {
   const v3 = (document.getElementById('v3')?.value || '').toString().toUpperCase();
   const bg = document.getElementById('bgColor')?.value || '#ffffff';
   const tx = document.getElementById('textColor')?.value || '#000000';
-
+const labels = [v1, v2, v3].map(txt => {
+  const lines = splitLines(txt);
+  return `<div class="label" style="background:${bg}; color:${tx}; font-size:${fontSizeFor(lines)}px">${lines.join('\n')}</div>`;
+}).join('');
   const html = `
   <html>
   <head>
@@ -118,13 +152,11 @@ function fallbackPrintInNewWindow() {
     <style>
       @page { size: A4 portrait; margin: 0; }
       html,body { margin:0; padding:0; width:210mm; height:297mm; }
-      .label { width:16cm; height:7.8cm; margin:0.5cm auto; display:flex; align-items:center; justify-content:center; font-weight:bold; text-transform:uppercase; overflow:hidden; white-space:nowrap; }
+      .label { width:16cm; height:7.8cm; margin:0.5cm auto; display:flex; align-items:center; justify-content:center; font-weight:bold; text-transform:uppercase; overflow:hidden; white-space:pre; line-height:1.05; }
     </style>
   </head>
   <body>
-    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v1)}">${v1}</div>
-    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v2)}">${v2}</div>
-    <div class="label" style="background:${bg}; color:${tx}; font-size:${calculateFontSizeForText(v3)}">${v3}</div>
+    ${labels} 
     <script>window.onload = ()=>{ window.print(); setTimeout(()=>window.close(),500); };</script>
   </body>
   </html>`;

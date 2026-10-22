@@ -76,7 +76,7 @@ input[type=text] {
     text-transform: uppercase;
     font-weight: bold;
     overflow: hidden;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     -webkit-column-break-inside: avoid !important;

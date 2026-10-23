@@ -1,5 +1,5 @@
 const CACHE_NAME = "rm-v2";
-const OFFLINE_URL = "/offline.html";
+const OFFLINE_URL = "./offline.html";
 
 self.addEventListener("install", event => {
   console.log("Service Worker installing");
@@ -7,15 +7,15 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll([
-        "/",
-        "/index.html",
-        "/manifest.json",
-        "/offline.html",
-        "/rappel-des-marques-192.png",
-        "/rappel-des-marques-512.png",        
-         "/app.js",
-         "/main.css",
-        "/respons.css"
+        "./",
+        "./index.html",
+        "./manifest.json",
+        "./offline.html",
+        "./rappel-des-marques-192.png",
+        "./rappel-des-marques.png",        
+         "./app.js",
+         "./main.css",
+        "./respons.css"
         // ajoute tes fichiers CSS / JS ici
       ]);
     })
